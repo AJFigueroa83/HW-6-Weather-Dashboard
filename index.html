@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Luckiest+Guy&family=Oswald:wght@200&family=Palette+Mosaic&family=Rock+3D&family=Rubik+Moonrocks&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="assets/reset.css">
     <link rel="stylesheet" href="assets/style.css">
     <title>Weather Dashboard</title>
@@ -14,23 +18,24 @@
         <h1 class="title">Weather Dashboard</h1>
         <p id="currentDay" class="lead">TODAY: <br /> <span id="time-display">00:00:00</span></p>
     </header>
-
-    <section class="search-bar">
-        <form id="search-form" class="form-input w-100">
-            <input id="search-input" class="form-input w-100" type="text" placeholder="Search!">
-            <button class="btn btn-info btn-block">Search</button>
-        </form>
-    </section>
-    <section class="recentSearch-container hide" id="list">
-        <ul>Recent Searches
-            <li class="recent-searches hide"></li>
-        </ul>
-    </section>
-    <section class="current-weather container hide">
-        <h2 class="current-city"></h2>
-    </section>
-    <section class="forecast-container hide">5-Day Forecast</section>
-
+    <main>
+        <section class="search-bar-container">
+            <h2>Search for a City:</h2>
+            <form class="search-form" id="form-input">
+                <input type="text" placeholder="Search.." name="search">
+                <button type="submit"><i class="fa fa-search"></i></button>
+              </form>
+        </section>
+        <section class="recent-search-container" id="list">
+            <ul>Recent Searches
+                <li class="recent-searches hide"></li>
+            </ul>
+        </section>
+        <section class="current-weather-container hide">
+            <h2 class="current-city"></h2>
+        </section>
+        <section class="forecast-container hide">5-Day Forecast</section>
+    </main>
 <script src="assets/script.js"></script>
 </body>
 </html>

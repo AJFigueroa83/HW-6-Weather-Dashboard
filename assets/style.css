@@ -1,0 +1,96 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgb(138, 215, 253);
+}
+
+.jumbotron {
+    text-align: center;
+    background: radial-gradient(circle, rgb(101, 206, 247) 0%, rgb(0, 144, 206) 100% );
+    color: black;
+    border-radius: 0;
+    border-bottom: 5px solid black;
+    padding: 20px;
+}
+
+.title, .lead {
+    font-family: 'Rubik Moonrocks', cursive;
+    font-size: 40px;
+}
+
+.title {
+    font-size: 60px;
+}
+
+.btn {
+    background: radial-gradient(circle, rgba(240,230,140,1) 0%, rgba(233, 160, 4, 0.954) 100%);
+    border-radius: 8px;
+    color: #13293d;
+    cursor: pointer;
+    font-size: 20px;
+    letter-spacing: 0.21px;
+    padding: 10px 25px;
+    text-align: center;
+    transition-duration: 0.15s;
+    transition-property: background-color;
+    transition-timing-function: linear;
+    margin-top: 5px;
+}
+
+/* Style the search field */
+form.search-form input[type=text] {
+    padding: 10px;
+    font-size: 17px;
+    border: 1px solid grey;
+    float: left;
+    width: 80%;
+    background: transparent;
+}
+  
+/* Style the submit button */
+form.search-form button {
+    float: left;
+    width: 20%;
+    padding: 10px;
+    background: #2196F3;
+    color: white;
+    font-size: 17px;
+    border: 1px solid grey;
+    border-left: none; /* Prevent double borders */
+    cursor: pointer;
+}
+  
+form.search-form button:hover {
+    background: #0b7dda;
+}
+  
+/* Clear floats */
+form.search-form::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+input {
+    max-width: 20%;
+}
+
+button {
+    max-width: 30px;
+}
+
+.search-bar-container, .recent-search-container, .forecast-container {
+    padding: 10px;
+    margin: 15px;
+    font-size: 25px;
+}
+
+h2 {
+    font-size: 30px;
+}
+
+.hide {
+    display: none;
+}
