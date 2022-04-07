@@ -22,8 +22,8 @@
         <section class="search-bar-container">
             <h2>Search for a City:</h2>
             <form class="search-form" id="form-input">
-                <input type="text" placeholder="Search.." name="search">
-                <button type="submit"><i class="fa fa-search"></i></button>
+                <input type="text" placeholder="Search.." id="search-input">
+                <button type="submit" id="search-btn"><i class="fa fa-search"></i></button>
               </form>
         </section>
         <section class="recent-search-container" id="list">
@@ -32,10 +32,12 @@
             </ul>
         </section>
         <section class="current-weather-container hide">
-            <h2 class="current-city"></h2>
+            <h3 class="current-city"></h3>
         </section>
         <section class="forecast-container hide">5-Day Forecast</section>
     </main>
-<script src="assets/script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="assets/script.js"></script>
 </body>
 </html>
