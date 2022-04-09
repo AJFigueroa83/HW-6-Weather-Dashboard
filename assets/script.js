@@ -2,6 +2,7 @@
 var timeDisplayEl = $("#time-display");
 var searchFormEl = $('#search-form');
 var APIkey = '2512f35cd9188a4c02534a5ab66c2457';
+var cityInputEl = $("#search-input");
 
 var currentCity;
 
@@ -115,6 +116,7 @@ function getWeather(data) {
 
                 card.appendChild(cardBody)
                 fiveDayForecastEl.append(card);
+                fiveDayForecastEl.classList.remove('hide');
             }
         })
     return;
@@ -150,7 +152,7 @@ function getCoordinates() {
     })
     return;
 }
-
+// this will display the list cities searched for 
 function displaySearchHistory() {
     var savedCities = JSON.parse(localStorage.getItem("cities")) || [];
     var previousSearchEl = document.getElementById('recent-searches');
@@ -163,7 +165,30 @@ function displaySearchHistory() {
         pastCityBtn.setAttribute("style", "width: 100%");
         pastCityBtn.textContent = `${savedCities[i].city}`;
         previousSearchEl.appendChild(pastCityBtn);
-        previousSearchEl.remove("hide")
+        previousSearchEl.classList.remove("hide")
     }
     return;
 }
+
+// submits city name to pass over getCoordinates function
+function cityFormSubmit(event) {
+    event.preventDefault();
+    currentCity = cityInputEl.val().trim();
+
+    clearCurrentCityWeather();
+    getCoordinates();
+
+    return;
+}
+
+// clears the search history
+function clearCurrentCityWeather() {
+    var currentConditionsEl = document.getElementById('currentConditions');
+    currentConditionsEl.innerHTML = '';
+
+    var fiveDayForecastEl = document.getElementById("fiveDayForecast");
+    fiveDayForecastEl.innerHTML = '';
+
+    return;
+}
+
