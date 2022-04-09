@@ -119,5 +119,51 @@ function getWeather(data) {
         })
     return;
 }
+// function to get city coordinates to pass to one call ApI
+function getCoordinates() {
+    var requestUrl = `https://api.openweathermap.org/data/2.5/weather?q=${currentCity}&appid=${APIkey}`;
+    var savedCities = JSON.parse(localStorage.getItem("cities")) || [];
 
+    fetch(requestUrl)
+        .then(function(response) {
+            if (response.status >= 200 && response.status <= 299) {
+                return response.JSON();
+            } else {
+                throw Error(response.statusText);
+            }
+        })
+       .then(function(data) {
+        var cityInfo = {
+        city: currentCity,
+        lon: data.coord.lon,
+        lat: data.coord.lat
+        }
+        savedCities.push(cityInfo);
+        localStorage.setItem("cities", JSON.stringify(savedCities));
 
+        displaySearchHistory();
+
+        return cityInfo;
+    })
+    .then(function(data) {
+        getWeather(data);
+    })
+    return;
+}
+
+function displaySearchHistory() {
+    var savedCities = JSON.parse(localStorage.getItem("cities")) || [];
+    var previousSearchEl = document.getElementById('recent-searches');
+
+    previousSearchEl.innerHTML ='';
+
+    for (i = 0; i < savedCities.length; i++) {
+        var pastCityBtn = document.createElement('button');
+        pastCityBtn.classList.add("btn", "btn-primary", "my-2", "previous-city");
+        pastCityBtn.setAttribute("style", "width: 100%");
+        pastCityBtn.textContent = `${savedCities[i].city}`;
+        previousSearchEl.appendChild(pastCityBtn);
+        previousSearchEl.remove("hide")
+    }
+    return;
+}
