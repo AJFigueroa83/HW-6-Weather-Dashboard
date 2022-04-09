@@ -1,9 +1,10 @@
 // variables for page function //
 var timeDisplayEl = $("#time-display");
 var searchFormEl = $('#search-form');
-var APIkey = '2512f35cd9188a4c02534a5ab66c2457';
+var APIkey = '9d478b2327e8d90b0bdf7b581a599de0';
 var cityInputEl = $("#search-input");
-
+var searchBtn = $('#search-btn')
+var previousSearchEl = $('.recent-searches')
 var currentCity;
 
 // time display function
@@ -15,7 +16,8 @@ function displayTime() {
 setInterval(displayTime, 1000);
 
 function getWeather(data) {
-    var requestUrl = 'https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&units={standard}&exclude={part}&appid={APIkey}'
+    var requestUrl = `https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={9d478b2327e8d90b0bdf7b581a599de0}`
+
     fetch(requestUrl)
         .then(function(response) {
             return response.json();
@@ -23,7 +25,7 @@ function getWeather(data) {
         .then(function(data) {
             // get current weather
             var currentConditionsEl = document.querySelector('.current-weather-container');
-            currentConditionsEl.addClass('border border-primary');
+            currentConditionsEl.classList.addClass('border border-primary');
 
             var cityNameEl = $('<h3>');
             cityNameEl.text(currentCity);
@@ -80,6 +82,7 @@ function getWeather(data) {
             }
 
             currentConditionsEl.append(currentUvEl);
+            currentConditionsEl.classList.remove("hide");
 
             // get 5 day forecast
             var fiveDayForecastEl = $('.forecast-container');
@@ -129,7 +132,7 @@ function getCoordinates() {
     fetch(requestUrl)
         .then(function(response) {
             if (response.status >= 200 && response.status <= 299) {
-                return response.JSON();
+                return response.json();
             } else {
                 throw Error(response.statusText);
             }
@@ -143,7 +146,7 @@ function getCoordinates() {
         savedCities.push(cityInfo);
         localStorage.setItem("cities", JSON.stringify(savedCities));
 
-        displaySearchHistory();
+        // displaySearchHistory();
 
         return cityInfo;
     })
@@ -155,9 +158,9 @@ function getCoordinates() {
 // this will display the list cities searched for 
 function displaySearchHistory() {
     var savedCities = JSON.parse(localStorage.getItem("cities")) || [];
-    var previousSearchEl = document.getElementById('recent-searches');
+    var previousSearchEl = document.getElementsByClassName('recent-searches');
 
-    previousSearchEl.innerHTML ='';
+    previousSearchEl.innerHTML = "";
 
     for (i = 0; i < savedCities.length; i++) {
         var pastCityBtn = document.createElement('button');
@@ -165,7 +168,7 @@ function displaySearchHistory() {
         pastCityBtn.setAttribute("style", "width: 100%");
         pastCityBtn.textContent = `${savedCities[i].city}`;
         previousSearchEl.appendChild(pastCityBtn);
-        previousSearchEl.classList.remove("hide")
+        previousSearchEl.classList.remove("hide");
     }
     return;
 }
@@ -183,10 +186,10 @@ function cityFormSubmit(event) {
 
 // clears the search history
 function clearCurrentCityWeather() {
-    var currentConditionsEl = document.getElementById('currentConditions');
+    var currentConditionsEl = document.getElementsByClassName('.current-weather-container');
     currentConditionsEl.innerHTML = '';
 
-    var fiveDayForecastEl = document.getElementById("fiveDayForecast");
+    var fiveDayForecastEl = document.getElementsByClassName(".forecast-container");
     fiveDayForecastEl.innerHTML = '';
 
     return;
@@ -225,4 +228,8 @@ function getPreviousCity(event) {
     return;
 }
 
-displaySearchHistory();
+// displaySearchHistory();
+
+searchBtn.on("click", cityFormSubmit);
+
+previousSearchEl.on('click', getPreviousCity);
