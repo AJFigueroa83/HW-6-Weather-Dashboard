@@ -2,6 +2,10 @@
     box-sizing: border-box;
 }
 
+:root {
+    --spacing: 10px;
+}
+
 body {
     background-color: rgb(138, 215, 253);
 }
@@ -24,71 +28,43 @@ body {
     font-size: 60px;
 }
 
-.btn {
-    background: radial-gradient(circle, rgba(240,230,140,1) 0%, rgba(233, 160, 4, 0.954) 100%);
-    border-radius: 8px;
-    color: #13293d;
-    cursor: pointer;
-    font-size: 20px;
-    letter-spacing: 0.21px;
-    padding: 10px 25px;
-    text-align: center;
-    transition-duration: 0.15s;
-    transition-property: background-color;
-    transition-timing-function: linear;
-    margin-top: 5px;
-}
-
-/* Style the search field */
-form.search-form input[type=text] {
-    padding: 10px;
-    font-size: 17px;
-    border: 1px solid grey;
+dt {
     float: left;
-    width: 80%;
-    background: transparent;
-}
-  
-/* Style the submit button */
-form.search-form button {
-    float: left;
-    width: 20%;
-    padding: 10px;
-    background: #2196F3;
-    color: white;
-    font-size: 17px;
-    border: 1px solid grey;
-    border-left: none; /* Prevent double borders */
-    cursor: pointer;
-}
-  
-form.search-form button:hover {
-    background: #0b7dda;
-}
-  
-/* Clear floats */
-form.search-form::after {
-    content: "";
-    clear: both;
-    display: table;
-}
-
-input {
-    max-width: 20%;
+    margin-right: var(--spacing);
 }
 
 button {
-    max-width: 30px;
+    text-transform: capitalize;
 }
 
-.search-bar-container, .recent-search-container, .forecast-container {
-    padding: 10px;
-    margin: 15px;
-    font-size: 25px;
+#weather-day-container {
+    min-height: 230px;
+    border: 1px solid gray;
 }
 
-h2 {
-    font-size: 30px;
+#search-bar-container, input, #button-container button {
+    margin-bottom: var(--spacing);
+}
+
+#button-container {
+    padding-top: var(--spacing);
+    border-top: 2px solid gray;
+}
+
+#weather-day-uv-index {
+    padding: 2px;
+}
+
+.favorable {
+    background-color: green;
+}
+
+.moderate {
+    background-color: yellow;
+}
+
+.severe {
+    background-color: red;
 }
 
 .hide {
