@@ -16,7 +16,7 @@ function displayTime() {
 setInterval(displayTime, 1000);
 
 function getWeather(data) {
-    var requestUrl = `https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={9d478b2327e8d90b0bdf7b581a599de0}`
+    var requestUrl = `https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&appid={APIkey}`;
 
     fetch(requestUrl)
         .then(function(response) {
@@ -111,7 +111,7 @@ function getWeather(data) {
                 var cardBody = document.createElement('section');
                 cardBody.classList.add('card-body')
                 cardBody.innerHTML = `<h4>${date}</h4>
-                    <img src= "http://openweathermap.org/img/wn/${icon}.png"></><br>
+                    <img src= "https://openweathermap.org/img/wn/${icon}.png"></><br>
                     ${temp}<br>
                     ${wind}<br>
                     ${humidity}<br>
