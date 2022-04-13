@@ -1,5 +1,6 @@
 // variables for page function //
 var timeDisplayEl = $("#time-display");
+var searchFormEl = document.querySelector('#search-form')
 var searchFormCityInputEl = document.querySelector('#search-input');
 var weatherDayCityEl = document.querySelector('#weather-day-city');
 var weatherDayTempEl = document.querySelector('#weather-day-temp');
@@ -100,7 +101,7 @@ function addButtons() {
 }
 
 function get5dayForecast(data) {
-    var forecastContainerEl.innerHTML = "";
+    forecastContainerEl.innerHTML = "";
     data.forEach(function (day, index) {
         if (index === 0 || index > 5) {
             return;
@@ -135,42 +136,7 @@ function get5dayForecast(data) {
     });
     outerForecastContainerEl.classList.remove('hide')
 }
-// var fiveDayForecastEl = document.querySelector('.forecast-container');
-    //     for (var i = 1; i <=5; i++) {
-    //         var date;
-    //         var temp;
-    //         var icon;
-    //         var wind;
-    //         var humidity;
-    //         var uvIndex;
 
-    //         date = data.daily[i].dt;
-    //         date = moment.unix(date).format('MM/DD/YYYY');
-
-    //         temp = data.daily[i].temp.day;
-    //         icon = data.daily[i].weather[0].icon;
-    //         wind = data.daily[i].wind_speed;
-    //         humidity = data.daily[i].humidity;
-    //         uvIndex = data.daily[i].uvi;
-
-    //             // creating cards for each day of forecast
-    //         var card = document.createElement('section');
-    //         card.classList.add('card', 'col-2', 'm-1', 'bg-primary', 'text-white');
-
-    //         var cardBody = document.createElement('section');
-    //         cardBody.classList.add('card-body')
-    //         cardBody.innerHTML = `<h4>${date}</h4>
-    //             <img src= "https://openweathermap.org/img/wn/${icon}.png"></><br>
-    //             ${temp}<br>
-    //             ${wind}<br>
-    //             ${humidity}<br>
-    //             ${uvi}`
-
-    //         card.appendChild(cardBody)
-    //         fiveDayForecastEl.append(card);
-    //         fiveDayForecastEl.classList.remove('hide');
-    //     }
-// add searches to local storage
 function storeCityLocation(city) {
     city = city.toLowerCase();
     var cities = window.localStorage.getItem('cities');
@@ -188,9 +154,9 @@ function storeCityLocation(city) {
 }
 
 // submits city name to get city weather
-function cityFormSubmit(event) {
-    event.preventDefault();
-    var city = searchFormCityInputEl.val().trim()
+function cityFormSubmit(evt) {
+    evt.preventDefault();
+    var city = searchFormCityInputEl.value.trim()
     getCityWeather(city);
 }
 
@@ -201,7 +167,7 @@ function handleButtonClick(evt) {
 }
 
 function addEventListeners() {
-    searchFormCityInputEl.addEventListener('submit', cityFormSubmit);
+    searchFormEl.addEventListener('submit', cityFormSubmit);
     buttonContainerEl.addEventListener('click', handleButtonClick);
 }
 
