@@ -7,12 +7,13 @@ var weatherDayTempEl = document.querySelector('#weather-day-temp');
 var weatherDayWindEl = document.querySelector('#weather-day-wind');
 var weatherDayHumidityEl = document.querySelector('#weather-day-humidity');
 var weatherDayUvIndexEl = document.querySelector('#weather-day-uv-index');
-var forecastContainerEl = document.querySelector('#forecast-conatainer');
+var forecastContainerEl = document.querySelector('#forecast-container');
 var weatherDayIconEl = document.querySelector('#weather-day-icon');
 var buttonContainerEl = document.querySelector('#button-container');
 var weatherDayContainerEl = document.querySelector('#current-weather-container');
 var outerForecastContainerEl = document.querySelector('#outer-forecast-container');
 var weatherDayDateEl = document.querySelector('#weather-day-date');
+var clearHistoryBtnEl = document.querySelector('#clear-history')
 
 var baseUrl = 'http://api.openweathermap.org/';
 var apiKey = '9d478b2327e8d90b0bdf7b581a599de0';
@@ -25,6 +26,7 @@ function displayTime() {
 
 setInterval(displayTime, 1000);
 
+// gets current weather for current city
 function getCityWeather(city) {
     var url = `${baseUrl}geo/1.0/direct?q=${city}&limit=1&appid=${apiKey}`;
 
@@ -46,7 +48,7 @@ function getCityWeather(city) {
             var lon = cityObject.lon;
 
             var currentWeatherUrl = `${baseUrl}data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${apiKey}&units=imperial`;
-            // get current weather
+            // get current weather from onecall api
             fetch(currentWeatherUrl)
                 .then(function (response) {
                     return response.json();
@@ -75,7 +77,7 @@ function getCityWeather(city) {
                         weatherDayUvIndexEl.classList.add('severe');
                     }
 
-                    weatherDayIconEl.src = `https://openweathermap.org/imp/wn/${icon}.png`;
+                    weatherDayIconEl.src = `https://openweathermap.org/img/wn/${icon}.png`;
                     weatherDayContainerEl.classList.remove('hide');
                     get5dayForecast(data.daily);
                 });
@@ -108,7 +110,7 @@ function get5dayForecast(data) {
         }
         var dt = day.dt;
         var date = moment(dt * 1000).format("L");
-        var temp = day.temp;
+        var temp = day.temp.day;
         var windSpeed = day.wind_speed;
         var humidity = day.humidity;
         var icon = day.weather[0].icon;
@@ -121,18 +123,19 @@ function get5dayForecast(data) {
         section.innerHTML = `
             <section class='card-weather bg-dark p-3'>
                 <h4>${date}</h4>
-                <img src='https://openweathermap.org/imp/wn/${icon}.png' />
+                <img src='https://openweathermap.org/img/wn/${icon}.png' />
                 <dl>
                     <dt>Temp:</dt>
-                    <dd>${temp}</dd>
+                    <dd>${temp} °F</dd>
                     <dt>Wind:</dt>
-                    <dd>${windSpeed}</dd>
+                    <dd>${windSpeed} mph</dd>
                     <dt>Humidity:</dt>
-                    <dd>${humidity}</dd>
+                    <dd>${humidity} %</dd>
                 </dl>
             </section>
         `;
         forecastContainerEl.appendChild(section);
+        forecastContainerEl.classList.remove('hide');
     });
     outerForecastContainerEl.classList.remove('hide')
 }
@@ -175,5 +178,13 @@ function init() {
     addEventListeners();
     addButtons();
 }
+
+clearHistoryBtnEl.addEventListener("click", function () {
+    localStorage.clear();
+    document.querySelector("#button-container").innerHTML = "";
+    outerForecastContainerEl.classList.add('hide');
+    weatherDayContainerEl.classList.add('hide');
+    forecastContainerEl.classList.add('hide');
+});
 
 init();

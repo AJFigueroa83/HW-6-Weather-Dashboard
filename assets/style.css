@@ -3,7 +3,7 @@
 }
 
 :root {
-    --spacing: 10px;
+    --spacing: 5px;
 }
 
 body {
@@ -44,6 +44,10 @@ dt {
 
 button {
     text-transform: capitalize;
+}
+
+.btn {
+    margin: 2px;
 }
 
 #weather-day-container {
