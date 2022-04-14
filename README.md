@@ -18,7 +18,7 @@ This application serves to provide an easy and accessible weather service inform
 
 This page was built using:  
 *Moment.js*  
-*Bulma.io*  
+*Bootstrap*  
 *OneCall weather API*
 
 ## Deployment
