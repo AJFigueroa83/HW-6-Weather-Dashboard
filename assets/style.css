@@ -23,8 +23,8 @@ body {
     background-attachment: fixed;
     background-position: center;
     background-size: cover; */
-    background-color: rgb(0, 213, 255);
-    color: black;
+    background-color: rgb(63, 63, 63);
+    color: rgb(255, 255, 255);
     border-radius: 0;
     border-bottom: 5px solid black;
     padding: 20px;
@@ -42,6 +42,11 @@ body {
 dt {
     float: left;
     margin-right: var(--spacing);
+    color: aliceblue;
+}
+
+.search-title .forecast-title{
+    color: aliceblue;
 }
 
 button {
