@@ -16,7 +16,7 @@ var weatherDayDateEl = document.querySelector('#weather-day-date');
 var clearHistoryBtnEl = document.querySelector('#clear-history')
 
 var baseUrl = 'http://api.openweathermap.org/';
-var apiKey = '9d478b2327e8d90b0bdf7b581a599de0';
+var apiKey = '2a756868a72daf81c811b7769b885832';
 
 // time display function
 function displayTime() {
