@@ -45,7 +45,11 @@ dt {
     color: aliceblue;
 }
 
-.search-title .forecast-title{
+dd {
+    color: aliceblue;
+}
+
+#search-title, #forecast-title {
     color: aliceblue;
 }
 
@@ -60,6 +64,10 @@ button {
 #weather-day-container {
     min-height: 230px;
     border: 1px solid gray;
+}
+
+#weather-day-city, #weather-day-date {
+    color: aliceblue;
 }
 
 #search-bar-container, input, #button-container button {
