@@ -15,7 +15,7 @@ var outerForecastContainerEl = document.querySelector('#outer-forecast-container
 var weatherDayDateEl = document.querySelector('#weather-day-date');
 var clearHistoryBtnEl = document.querySelector('#clear-history')
 
-var baseUrl = 'http://api.openweathermap.org/';
+var baseUrl = 'https://api.openweathermap.org/';
 var apiKey = '2a756868a72daf81c811b7769b885832';
 
 // time display function
