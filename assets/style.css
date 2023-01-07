@@ -7,7 +7,8 @@
 }
 
 body {
-    background-image: url(https://img.freepik.com/free-photo/white-cloud-blue-sky-sea_74190-4488.jpg?w=2000);
+    /* background-image: url(https://img.freepik.com/free-photo/white-cloud-blue-sky-sea_74190-4488.jpg?w=2000); */
+    background-image: url(./images/weather.jpg);
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
@@ -17,11 +18,12 @@ body {
 
 .jumbotron {
     text-align: center;
-    background-image: url(https://images.ctfassets.net/hrltx12pl8hq/6TIZLa1AKeBel0yVO7ReIn/1fc0e2fd9fcc6d66b3cc733aa2547e11/weather-images.jpg?fit=fill&w=800&h=300);
+    /* background-image: url(https://images.ctfassets.net/hrltx12pl8hq/6TIZLa1AKeBel0yVO7ReIn/1fc0e2fd9fcc6d66b3cc733aa2547e11/weather-images.jpg?fit=fill&w=800&h=300);
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
-    background-size: cover;
+    background-size: cover; */
+    background-color: rgb(0, 213, 255);
     color: black;
     border-radius: 0;
     border-bottom: 5px solid black;
