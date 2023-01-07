@@ -65,7 +65,7 @@ button {
 }
 
 #weather-day-uv-index {
-    max-width: fit-content;
+    max-width: 25%;
     padding: 2px;
 }
 
