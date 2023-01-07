@@ -57,17 +57,17 @@ function getCityWeather(city) {
                     console.log(data);
                     var date = moment(Date.now()).format("L");
                     var current = data.current;
-                    var temp = current.temp;
-                    var windSpeed = current.wind_speed;
+                    var temp = Math.round(current.temp);
+                    var windSpeed = Math.round(current.wind_speed);
                     var humidity = current.humidity;
                     var uvIndex = current.uvi;
                     var icon = current.weather[0].icon;
 
                     weatherDayCityEl.textContent = city;
                     weatherDayDateEl.textContent = date;
-                    weatherDayTempEl.textContent = temp;
-                    weatherDayWindEl.textContent = windSpeed;
-                    weatherDayHumidityEl.textContent = humidity;
+                    weatherDayTempEl.textContent = temp + " °F";
+                    weatherDayWindEl.textContent = windSpeed + " MPH";
+                    weatherDayHumidityEl.textContent = humidity + "%";
                     weatherDayUvIndexEl.textContent = uvIndex;
                     if (uvIndex < 3) {
                         weatherDayUvIndexEl.classList.add('favorable');
@@ -110,8 +110,8 @@ function get5dayForecast(data) {
         }
         var dt = day.dt;
         var date = moment(dt * 1000).format("L");
-        var temp = day.temp.day;
-        var windSpeed = day.wind_speed;
+        var temp = Math.round(day.temp.day);
+        var windSpeed = Math.round(day.wind_speed);
         var humidity = day.humidity;
         var icon = day.weather[0].icon;
         var section = document.createElement('section');
